@@ -60,6 +60,44 @@ const scores = rounds.map(getTotalScore);
 
 // Calculate total score
 const totalScore = scores.reduce((sum, num) => sum + num,  0);
-
+console.log("---- PART ONE ----");
 console.log(totalScore);
+
+// ---- PART TWO ----
+// 0pts for not winning
+// 3pts for draw
+// 6pts for winning
+const futureScores = {X: 0, Y: 3, Z: 6};
+
+// 3pts if rock is choosen
+// 2tps if paper is choosen
+// 1pts if sissors are choosen
+
+const newRoundScores = {
+    A: {X: 3, Y: 1, Z: 2},
+    B: {X: 1, Y: 2, Z: 3},
+    C: {X: 2, Y: 3, Z: 1}
+};
+
+const getNewScores = (round) => {
+    const moves = round.split(" ");
+    const [elfMove, roundsFuture] = [moves[0], moves[1]];
+
+    // Get score of current round
+    currentRoundScore = futureScores[roundsFuture];
+
+    // Get my move score
+    const myMovementScore = newRoundScores[elfMove][roundsFuture];
+
+    // Get final score for this round
+    const newRoundScore = currentRoundScore + myMovementScore;
+    return newRoundScore;
+}
+
+const newScores = rounds.map(getNewScores);
+
+const newTotalScore = newScores.reduce((sum, num) => sum + num, 0);
+
+console.log("---- PART TWO ----");
+console.log(newTotalScore);
 
