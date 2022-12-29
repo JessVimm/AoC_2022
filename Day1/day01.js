@@ -1,6 +1,6 @@
 // Load content
-const getAoCInput =  async() => {
-    const response = await fetch("https://adventofcode.com/2022/day/1/input") 
+const getAoCInput = async() => {
+    const response = await fetch("https://adventofcode.com/2022/day/1/input"); 
     const data = await response.text();
     return data;
 }; 
